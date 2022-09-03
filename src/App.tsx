@@ -15,7 +15,7 @@ const App: React.FC = () => {
         </Routes>
       </Suspense>
     </div>
-  )
-}
+  );
+};
 
 export default App;

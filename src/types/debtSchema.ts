@@ -15,5 +15,5 @@ export const DebtSchema = yup.object().shape({
   debtName: yup.string().typeError(debtName).required(debtName),
   outstandingAmount: yup.number().typeError(outstandingAmount).required(outstandingAmount).positive(outstandingAmount),
   interestRate: yup.number().typeError(interestRate).required(interestRate).positive(interestRate),
-  minimalPayment: yup.number().typeError(minimalPayment).required(minimalPayment).positive(minimalPayment)
+  minimalPayment: yup.number().typeError(minimalPayment).required(minimalPayment).positive(minimalPayment),
 })

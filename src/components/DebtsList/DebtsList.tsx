@@ -5,7 +5,7 @@ import React from 'react';
 import DebtsListItem from './DebtListItem';
 import styles from './DebtsList.module.scss';
 
-const DebtsList: React.FC = () => {  
+const DebtsList: React.FC = () => {
   const data = [
     {
       borrowerName: 'Andrii',
@@ -13,7 +13,7 @@ const DebtsList: React.FC = () => {
       minimalPayment: 200,
       interestRate: 5,
       _id: '1',
-      debtName: 'Car1'
+      debtName: 'Car1',
     },
     {
       borrowerName: 'Andrii',
@@ -21,7 +21,7 @@ const DebtsList: React.FC = () => {
       minimalPayment: 200,
       interestRate: 5,
       _id: '2',
-      debtName: 'Car2'
+      debtName: 'Car2',
     },
     {
       borrowerName: 'Andrii',
@@ -29,7 +29,7 @@ const DebtsList: React.FC = () => {
       minimalPayment: 200,
       interestRate: 5,
       _id: '3',
-      debtName: 'Car3'
+      debtName: 'Car3',
     },
     {
       borrowerName: 'Andrii',
@@ -37,7 +37,7 @@ const DebtsList: React.FC = () => {
       minimalPayment: 200,
       interestRate: 5,
       _id: '4',
-      debtName: 'Car4'
+      debtName: 'Car4',
     },
     {
       borrowerName: 'Andrii',
@@ -45,8 +45,8 @@ const DebtsList: React.FC = () => {
       minimalPayment: 200,
       interestRate: 5,
       _id: '5',
-      debtName: 'Car5'
-    }
+      debtName: 'Car5',
+    },
   ];
 
   return (
@@ -67,11 +67,11 @@ const DebtsList: React.FC = () => {
               interestRate={interestRate}
               debtName={debtName}
             />
-          )
+          );
         })}
       </ul>
     </>
-  )
-}
+  );
+};
 
 export default DebtsList;

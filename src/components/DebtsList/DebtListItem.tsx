@@ -27,7 +27,7 @@ const DebtsListItem: React.FC<IDebt> = ({
         Interest rate: <span className={styles.debtDesctValue}>{interestRate}%</span>
       </p>
     </div>
-  )
-}
+  );
+};
 
 export default DebtsListItem;
