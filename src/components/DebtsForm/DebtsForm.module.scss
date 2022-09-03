@@ -1,0 +1,98 @@
+@import '../../scss/varriables';
+@import '../../scss/base-styles';
+
+.SubmButton {
+    @extend %button;
+    width: 320px;
+    height: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.14;
+    text-transform: capitalize;
+}
+
+
+
+
+.GoBackButton {
+    @extend %button;
+    margin-bottom: 40px;
+    background: $white-color;
+    color: #2CB7B0;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.29;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus {
+        background: $white-color;
+        color: #209D97;
+    }
+
+    &SvgBack {
+    width: 20px;
+    height: 7px;
+    color: #2CB7B0;
+    fill: #209D97;
+    stroke: #209D97;
+}
+}
+
+.formInput {
+    @extend %input;
+}
+
+.formTitle {
+    margin-bottom: 40px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1;   
+    text-transform: capitalize;
+}
+
+.sectionCont {
+    margin-bottom: 40px;
+}
+
+.titleSection {
+    margin-bottom: 16px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+}
+
+.formLabel {
+    display: block;
+    position: relative;
+    &:not(:last-child){
+        margin-bottom: 16px;
+    }
+    
+}
+
+.labelText {
+    display: block;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+
+.errorText {
+    position: absolute;
+    bottom: -20px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.25;
+    width: 320px;
+    color: #EF476F;
+    text-align: right;
+}
