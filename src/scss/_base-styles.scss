@@ -78,6 +78,7 @@ ul {
     background: $main-color;
     @include animation-function(background);
     
+    
     &:hover,
     &:focus {
         background: $hover-color;

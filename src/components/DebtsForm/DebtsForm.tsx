@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import { useForm, Resolver } from 'react-hook-form';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { DebtSchema } from '../../types/debtSchema';
+import { useAddDebtMutation } from '../../redux/debts';
 import styles from './DebtsForm.module.scss';
 import { IDebt } from '../../types/debt.type';
-import BackIcon from '../../svg/back.svg';
+import { ReactComponent as BackIcon } from '../../svg/back.svg';
 
 const DebtsForm: React.FC = () => {  
   const { register, handleSubmit, formState: { errors } } = useForm<IDebt>({
     resolver: yupResolver(DebtSchema),
   });
-
-  const onSubmit = (data: IDebt) => {
-    console.log(data);
+  const navigate = useNavigate();
+  const [addDebt] = useAddDebtMutation();
+  const onSubmit = (data: IDebt) => {    
+    addDebt(data);
+    navigate('/');    
   };
-
-  const onError = (errors: any) => {
-    console.log(errors);
-  };
-
 
   return (
     <>
-      <button className={styles.GoBackButton} type="button">
-        <span>
-          <svg className={styles.GoBackButtonSvgBack}>
-            <use href="../../svg/InlineSprite.svg#3"></use>
-          </svg>
+      <button
+        onClick={()=> navigate('/')}
+        className={styles.GoBackButton}
+        type="button">
+        <span className={styles.GoBackButtonSvgBack}>
+          <BackIcon width="8px" height="8px" fill="inherits" stroke="inherits" />
         </span>
         Go Back
       </button>
       <h1 className={styles.formTitle}>Add A Deft</h1>
 
-      <form onSubmit={handleSubmit(onSubmit, onError)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.sectionCont}>
           <p className={styles.titleSection}>Borrower</p>
           <label className={styles.formLabel}>

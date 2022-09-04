@@ -18,27 +18,33 @@
 .GoBackButton {
     @extend %button;
     margin-bottom: 40px;
+    padding: 0;
+    display: flex;
+    align-items: center;
     background: $white-color;
     color: #2CB7B0;
+    stroke: #2CB7B0;
     font-family: 'Inter';
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
     line-height: 1.29;
     text-transform: capitalize;
-
+    transition: background 250ms cubic-bezier(0.4, 0, 0.2, 1),
+            stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
     &:hover,
     &:focus {
         background: $white-color;
         color: #209D97;
+        stroke: #209D97;
     }
 
     &SvgBack {
-    width: 20px;
-    height: 7px;
-    color: #2CB7B0;
-    fill: #209D97;
-    stroke: #209D97;
+        display: flex;
+        align-items: center;
+        margin-right: 8px;
+        width: 8px;
+        height: 7px;
 }
 }
 
