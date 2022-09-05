@@ -19,7 +19,7 @@ export const debtsApi = createApi({
       invalidatesTags: ['Debts'],
     }),
     sendNotify: builder.mutation<void, { _id: string | undefined }>({
-      query: _id => ({
+      query: ({ _id }) => ({
         url: `/debts/${_id}`,
         method: 'POST',
       }),
