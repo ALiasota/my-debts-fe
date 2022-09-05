@@ -53,7 +53,7 @@ const DebtsList: React.FC = () => {
                     openModal={openModal}
                   />
                 )
-              })}
+              }).reverse()}
         </ul>
       )}
       {showModal && <Modal id={id} onClose={toggleModal } />}

@@ -24,11 +24,11 @@ export const debtsApi = createApi({
         method: 'POST',
       }),
     }),
-    sendExtraNotify: builder.mutation<void, { id: string | undefined; outstandingAmount: number }>({
-      query: ({ id, outstandingAmount }) => ({
+    sendExtraNotify: builder.mutation<void, { id: string | undefined; extraPayment: number }>({
+      query: ({ id, extraPayment }) => ({
         url: `/debts/extra/${id}`,
         method: 'POST',
-        body: { outstandingAmount },
+        body: { extraPayment },
       }),
     }),
   }),

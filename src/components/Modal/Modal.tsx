@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { useSendExtraNotifyMutation } from '../../redux/debts';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { AmountSchema } from '../../types/debtSchema';
+import { PaymentSchema } from '../../types/debtSchema';
 import { ReactComponent as CloseIcon } from '../../svg/close.svg';
 import styles from './Modal.module.scss';
 
@@ -23,13 +23,13 @@ const Modal: React.FC<Props> = ({ id, onClose }) => {
       window.removeEventListener('keydown', handleKeyDown);
     };
   });
-  const { register, handleSubmit, formState: { errors } } = useForm<{outstandingAmount: number}>({
-    resolver: yupResolver(AmountSchema),
+  const { register, handleSubmit, formState: { errors } } = useForm<{extraPayment: number}>({
+    resolver: yupResolver(PaymentSchema),
   });
   const [sendExtraNotify] = useSendExtraNotifyMutation();
-  const onSubmit = (data: {outstandingAmount: number}) => { 
-    const  {outstandingAmount} = data;  
-    sendExtraNotify({outstandingAmount, id});
+  const onSubmit = (data: {extraPayment: number}) => { 
+    const  {extraPayment} = data;  
+    sendExtraNotify({extraPayment, id});
     onClose();   
   };
 
@@ -62,15 +62,15 @@ const Modal: React.FC<Props> = ({ id, onClose }) => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div style={{ marginBottom: '24px' }} className={styles.sectionCont}>
             <label className={styles.formLabel}>
-              <span className={styles.labelText}>Outstanding amount</span>
+              <span className={styles.labelText}>Extra payment amount</span>
               <input
                 className={styles.formInput}
-                style={errors?.outstandingAmount ? { border: '1px solid #EF476F', width: '360px' } : { width: '360px' }}
+                style={errors?.extraPayment ? { border: '1px solid #EF476F', width: '360px' } : { width: '360px' }}
                 placeholder="Enter amount"
                 type="text"
-                {...register('outstandingAmount')}
+                {...register('extraPayment')}
               />
-              {errors?.outstandingAmount && <p className={styles.errorText}>{errors.outstandingAmount.message}</p>}
+              {errors?.extraPayment && <p className={styles.errorText}>{errors.extraPayment.message}</p>}
             </label>
           </div>
           <button className={styles.SubmButton} style={{ width: '360px' }} type="submit">
