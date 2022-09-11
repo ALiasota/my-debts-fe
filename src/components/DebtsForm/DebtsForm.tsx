@@ -14,24 +14,20 @@ const DebtsForm: React.FC = () => {
   });
   const navigate = useNavigate();
   const [addDebt] = useAddDebtMutation();
-  const onSubmit = (data: IDebt) => {    
+  const onSubmit = (data: IDebt) => {
     addDebt(data);
     navigate('/');    
   };
 
   return (
     <>
-      <button
-        onClick={()=> navigate('/')}
-        className={styles.GoBackButton}
-        type="button">
+      <button onClick={() => navigate('/')} className={styles.GoBackButton} type="button">
         <span className={styles.GoBackButtonSvgBack}>
           <BackIcon width="8px" height="8px" fill="inherits" stroke="inherits" />
         </span>
         Go Back
       </button>
       <h1 className={styles.formTitle}>Add A Deft</h1>
-
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.sectionCont}>
           <p className={styles.titleSection}>Borrower</p>
@@ -70,6 +66,19 @@ const DebtsForm: React.FC = () => {
               {...register('debtName')}
             />
             {errors?.debtName && <p className={styles.errorText}>{errors.debtName.message}</p>}
+          </label>
+          <label className={styles.formLabel}>
+            <span className={styles.labelText}>Expiry date</span>
+            <input
+              className={styles.formInput}
+              style={
+                errors?.expiryDate && { border: '1px solid #EF476F' }
+              }
+              placeholder="Enter expiry date"
+              type="date"
+              {...register('expiryDate')}
+            />
+            {errors?.expiryDate && <p className={styles.errorText}>{errors.expiryDate.message}</p>}
           </label>
           <label className={styles.formLabel}>
             <span className={styles.labelText}>Outstanding amount</span>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { format, formatDistance } from 'date-fns';
 import styles from './DebtsList.module.scss';
 import { IDebt } from '../../types/debt.type';
 import { ReactComponent as BellIcon } from '../../svg/bell.svg';
@@ -12,9 +13,11 @@ type Props = {
 }
 
 const DebtsListItem: React.FC<Props> = ({ debt, openModal }) => {
-  const { borrowerName, _id, outstandingAmount, minimalPayment, interestRate, debtName } = debt;
+  const { borrowerName, _id, outstandingAmount, minimalPayment, interestRate, debtName, expiryDate } = debt;
   const [sendNotify] = useSendNotifyMutation();
-  const handleSendNotify = () => { sendNotify({_id}) };
+  const handleSendNotify = () => { sendNotify({ _id }) };
+  const expDate = format(new Date(expiryDate), 'dd/MM/yyyy');
+  const distance = formatDistance(new Date(), new Date(expiryDate));
   return (
     <div className={styles.itemCont}>
       <div className={styles.flexCont}>
@@ -46,6 +49,12 @@ const DebtsListItem: React.FC<Props> = ({ debt, openModal }) => {
       </p>
       <p className={styles.debtDesctText}>
         Interest rate: <span className={styles.debtDesctValue}>{interestRate}%</span>
+      </p>
+      <p className={styles.debtDesctText}>
+        Expiry date: <span className={styles.debtDesctValue}>{expDate}</span>
+      </p>
+      <p className={styles.debtDesctText}>
+        Days left: <span className={styles.debtDesctValue}>{distance}</span>
       </p>
     </div>
   )

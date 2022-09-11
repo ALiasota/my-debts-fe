@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CirclesWithBar } from  'react-loader-spinner'
+import { CirclesWithBar } from 'react-loader-spinner';
 import { useFetchDebtsQuery } from '../../redux/debts'; 
 import DebtsListItem from './DebtListItem';
 import Modal from '../Modal';
@@ -44,8 +44,11 @@ const DebtsList: React.FC = () => {
       ) : (
         <ul>
           {data &&
-              data.map(({ borrowerName, _id, outstandingAmount, minimalPayment, interestRate, debtName }) => {
-                const debt = { borrowerName, _id, outstandingAmount, minimalPayment, interestRate, debtName };
+              data.map(({ borrowerName,
+                _id, outstandingAmount, minimalPayment, interestRate, debtName, expiryDate }) => {
+                const debt = {
+                  borrowerName,
+                  _id, outstandingAmount, minimalPayment, interestRate, debtName, expiryDate };
                 return (
                   <DebtsListItem
                     key={_id}

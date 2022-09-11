@@ -6,4 +6,5 @@ export interface IDebt {
   interestRate: number
   minimalPayment: number
   _id?: string
+  expiryDate: Date
 }

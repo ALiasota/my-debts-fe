@@ -1,6 +1,7 @@
 import * as yup from 'yup'
 
 const borrowerName = 'Please enter name'
+const expiryDate = 'Please enter date'
 const borrowerPhone = 'Please enter correct phone like +############'
 const debtName = 'Please enter debt name'
 const outstandingAmount = 'Please enter correct amount'
@@ -17,6 +18,7 @@ export const DebtSchema = yup.object().shape({
     .required(borrowerPhone)
     .matches(phoneRegExp, borrowerPhone),
   debtName: yup.string().typeError(debtName).required(debtName),
+  expiryDate: yup.date().min(new Date(), expiryDate).required(expiryDate),
   outstandingAmount: yup.number().typeError(outstandingAmount).required(outstandingAmount).positive(outstandingAmount),
   interestRate: yup.number().typeError(interestRate).required(interestRate).positive(interestRate),
   minimalPayment: yup.number().typeError(minimalPayment).required(minimalPayment).positive(minimalPayment),

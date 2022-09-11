@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { IDebt } from '../../types/debt.type'
-
+// baseQuery: fetchBaseQuery({ baseUrl: 'https://my-debs.herokuapp.com/api' }),
+// baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3020/api' }),
 export const debtsApi = createApi({
   reducerPath: 'debtsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://my-debs.herokuapp.com/api' }),
